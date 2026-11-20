@@ -6,10 +6,9 @@ Kim and Sau showed that the spectral gap of the symmetric inclusion process equa
 weights are at least one, and that this fails on tori of dimension at least two with small weights. We ask on which
 trees it can fail. On every tree that is not a caterpillar we give conductances and site weights for which two
 particles relax strictly more slowly than one. On a caterpillar two walkers killed when they come within distance one
-die strictly faster than one walker relaxes, because they cannot exchange places. With the small-weight analysis of Kim
-and Sau it follows that, once the weights are scaled down far enough in fixed proportions, the caterpillars are exactly
-the trees on which, for all conductances and proportions and for each number of particles, the gap equals that of one
-particle. We conjecture that on a caterpillar two particles never relax more slowly than one, at any weights; on stars
+die strictly faster than one walker relaxes, because they cannot exchange places. Combined with the small-weight limit
+of Kim and Sau, this shows that a tree is a caterpillar if and only if, for all conductances, all weight proportions and
+every number of particles, the gap equals that of one particle once the weights are small enough. We conjecture that on a caterpillar two particles never relax more slowly than one, at any weights; on stars
 with equal conductances this follows from work of Feng, Miclo and Wang and of Kim and Sau.
 
 `main.tex` and `main.pdf` are the paper.
