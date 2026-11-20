@@ -1,0 +1,289 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{xurl}
+\usepackage[hidelinks]{hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\gap}{\mathrm{gap}}
+\newcommand{\RW}{\mathrm{RW}}
+\newcommand{\eps}{\varepsilon}
+\setlength{\emergencystretch}{3em}
+
+\title{Caterpillars and the spectral gap of the symmetric inclusion process}
+\author{Yitzchak Shmalo$^{\,a}$\thanks{Email address:
+\texttt{yitzchak.shmalo@gmail.com} (Yitzchak Shmalo).}\\
+{\small $^{a}$Einstein Institute of Mathematics, The Hebrew University of
+Jerusalem, Givat Ram,}\\
+{\small Jerusalem, Israel}}
+\date{November 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Kim and Sau showed that the spectral gap of the symmetric inclusion process equals that of one particle when all site weights are at least one, and that this fails on tori of dimension at least two with small weights. We ask on which trees it can fail. On every tree that is not a caterpillar we give conductances and site weights for which two particles relax strictly more slowly than one. On a caterpillar two walkers killed when they come within distance one die strictly faster than one walker relaxes, because they cannot exchange places. With the small-weight analysis of Kim and Sau it follows that, once the weights are scaled down far enough in fixed proportions, the caterpillars are exactly the trees on which, for all conductances and proportions and for each number of particles, the gap equals that of one particle. We conjecture that on a caterpillar two particles never relax more slowly than one, at any weights; on stars with equal conductances this follows from work of Feng, Miclo and Wang and of Kim and Sau.
+\end{abstract}
+
+\noindent\textit{Keywords:} symmetric inclusion process, spectral gap, Aldous' spectral gap conjecture, trees, caterpillars.
+
+\noindent\textit{2020 Mathematics Subject Classification:} 60K35, 60J27, 05C05.
+
+\section{Introduction}
+
+Let $G=(V,E)$ be a finite connected graph with $|V|\ge2$ and conductances $c_{xy}=c_{yx}>0$ on its edges and site weights $\alpha=(\alpha_x)_{x\in V}$, $\alpha_x>0$. In the symmetric inclusion process~\cite{GKR07} with $k$ particles, $\mathrm{SIP}_k(G,\alpha)$, the state is a configuration $\eta\in\mathbb{N}_0^V$ with $\sum_x\eta_x=k$, and a particle at $x$ jumps to a neighbour $y$ at rate
+\[
+c_{xy}\,\eta_x\,(\alpha_y+\eta_y).
+\]
+The process is reversible with respect to
+\[
+\pi_k(\eta)\;\propto\;\prod_{x\in V}\frac{\Gamma(\alpha_x+\eta_x)}{\Gamma(\alpha_x)\,\eta_x!},
+\]
+a Dirichlet-multinomial law. We write $L_k$ for its generator and $\gap_k(G,\alpha)$ for the smallest nonzero eigenvalue of $-L_k$. A single particle performs the random walk $\RW(G,\alpha)$ that jumps from $x$ to $y$ at rate $c_{xy}\alpha_y$; it is reversible with respect to $\alpha$, and $\gap_1=\gap_{\RW}$. The linear span of the occupation variables $\eta_x$ is invariant under $L_k$, because the quadratic terms cancel:
+\[
+L_k\eta_x=\sum_{y}c_{xy}\,(\alpha_x\eta_y-\alpha_y\eta_x),
+\]
+and on this span $-L_k$ has the spectrum of $-$(the generator of $\RW(G,\alpha)$). Hence $\gap_k\le\gap_1$ for every $k$, and $\gap_{\mathrm{SIP}}:=\inf_k\gap_k\le\gap_2\le\gap_1$ \cite{KS24,KS25}.
+
+Kim and Sau proved that $(1\wedge\alpha_{\min})\gap_{\RW}\le\gap_{\mathrm{SIP}}\le\gap_{\RW}$ on every graph, so that the one-particle identity $\gap_{\mathrm{SIP}}=\gap_{\RW}$ holds whenever $\alpha_{\min}\ge1$ \cite{KS24}. This is the inclusion-process analogue of Aldous' spectral gap conjecture, proved for the interchange process by Caputo, Liggett and Richthammer \cite{CLR10}; on weighted trees the interchange case had been proved by Handjani and Jungreis \cite{HJ96}. Below $\alpha_{\min}=1$ the identity can fail. Kim and Sau fix a direction $\hat\alpha>0$, put $\alpha=\eps\hat\alpha$ and show that on every graph
+\begin{equation}\label{eq:KSlimit}
+\lim_{\eps\to0}\frac{\gap_k(\eps\hat\alpha)}{\eps}=\gap_{\RW}(\hat\alpha)\wedge\lambda_{2,2}(\hat\alpha),\qquad k\ge2,
+\end{equation}
+\cite[Corollaries~5.2 and~5.7, Propositions~5.10 and~5.14]{KS25}. Here $\Omega_{2,2}$ is the set of unordered pairs of vertices at graph distance at least two, and $\lambda_{2,2}(\hat\alpha)$ is the bottom of the spectrum of two independent copies of $\RW(G,\hat\alpha)$ on $\Omega_{2,2}$, killed at the first jump to distance at most one; we call this process the killed pair (Section~\ref{sec:limit}). Since $\gap_1(\eps\hat\alpha)=\eps\gap_{\RW}(\hat\alpha)$, the identity fails at all small $\eps$ as soon as two walkers killed at distance at most one survive longer than one walker takes to relax, that is, when $\lambda_{2,2}(\hat\alpha)<\gap_{\RW}(\hat\alpha)$. On the discrete torus $\mathbb{T}^d_N$ with $d\ge2$, $N$ large and $\hat\alpha\equiv1$ one has $\lim_{\eps\to0}\gap_2/\gap_1<1$ \cite[Theorem~2.4]{KS25}: two walkers kept apart there survive longer than one walker takes to relax.
+
+A \emph{caterpillar} is a tree with a path, the spine, such that every vertex lies on the spine or is adjacent to it. On a caterpillar, instead, $\lambda_{2,2}(\hat\alpha)>\gap_{\RW}(\hat\alpha)$, by an argument in the spirit of Karlin and McGregor's for non-crossing walks on the line \cite{KM59}. Project each vertex to the spine, and order the leaves at each spine vertex once and for all. A jump that would reverse the order of two walkers at distance at least two brings them within distance one. So the ordered pairs at distance at least two fall into two mirror halves with no transition between them. Let $\mathcal D$ be the Dirichlet form of two free walkers in $L^2(\hat\alpha\otimes\hat\alpha)$. Then $\lambda_{2,2}(\hat\alpha)$ is the minimum of $\mathcal D(f)/\|f\|^2$ over nonzero $f$ supported on one half. For such $f$ the function $g(x,y)=f(x,y)-f(y,x)$ is antisymmetric, and
+\[
+\frac{\mathcal D(f)}{\|f\|^2}=\frac{\mathcal D(g)}{\|g\|^2}\ \ge\ \lambda_0+\lambda_1=\gap_{\RW}(\hat\alpha),
+\]
+where $0=\lambda_0<\lambda_1\le\cdots$ are the eigenvalues of minus the generator of $\RW(\hat\alpha)$. In the case of equality, $g(x,y)=\psi(y)-\psi(x)$ for an eigenfunction $\psi$ with eigenvalue $\lambda_1$; since $g$ vanishes on adjacent pairs, $\psi$ is constant, so $g=0$. Hence $\lambda_{2,2}(\hat\alpha)>\gap_{\RW}(\hat\alpha)$ on every caterpillar. On a tree that is not a caterpillar two walkers can exchange places without coming within distance one, and on every such tree $\lambda_{2,2}(\hat\alpha)<\gap_{\RW}(\hat\alpha)$ for suitable conductances and directions.
+
+We say that a weighted graph \emph{separates} if $\gap_2<\gap_1$. On which trees can this happen? Let $S(2,2,2)$ be the spider with three legs of length two: a centre joined to three vertices, each of which carries one further leaf.
+
+\begin{theorem}\label{thm:A}
+If a finite tree $T$ is not a caterpillar, then there are conductances and site weights on $T$ with $\gap_2<\gap_1$. In particular $\gap_{\mathrm{SIP}}<\gap_{\RW}$ for these data.
+\end{theorem}
+
+\begin{theorem}\label{thm:B}
+On every caterpillar, for all conductances and all $\hat\alpha$, $\lambda_{2,2}(\hat\alpha)>\gap_{\RW}(\hat\alpha)$.
+\end{theorem}
+
+\begin{corollary}\label{cor:C}
+Let $T$ be a caterpillar with conductances $c$, let $\hat\alpha>0$ and $k\ge2$. There is $\eps_0>0$, depending on $T,c,\hat\alpha,k$, such that $\gap_k(T,\eps\hat\alpha)=\gap_1(T,\eps\hat\alpha)$ for all $0<\eps<\eps_0$.
+\end{corollary}
+
+Corollary~\ref{cor:C} is an exact identity, not only an asymptotic one; it does not give a single $\eps_0$ for all $k$, so it does not by itself give $\gap_{\mathrm{SIP}}=\gap_{\RW}$. Proposition~\ref{prop:small} in Section~\ref{sec:A} shows that every tree that is not a caterpillar has conductances and a direction $\hat\alpha$ with $\lambda_{2,2}(\hat\alpha)<\gap_{\RW}(\hat\alpha)$, and then $\gap_k(\eps\hat\alpha)<\gap_1(\eps\hat\alpha)$ for small $\eps$. With $k=2$ this gives Theorem~\ref{thm:A} again in the small-weight limit; Theorem~\ref{thm:A} itself holds at fixed weights, with the explicit data of Lemma~\ref{lem:spider} carried over by Lemma~\ref{lem:contract}, which moves a separating example from a contracted tree back to the original tree by making the conductances on the contracted edges large. Together with Corollary~\ref{cor:C}, the trees on which $\gap_k(\eps\hat\alpha)=\gap_1(\eps\hat\alpha)$ for all conductances, every direction, every $k\ge2$ and all sufficiently small $\eps$ (depending on $k$, the conductances and $\hat\alpha$) are exactly the caterpillars.
+
+\begin{conjecture}\label{conj}
+If $T$ is a caterpillar, then $\gap_2(T,\alpha)=\gap_1(T,\alpha)$ for all conductances and all site weights.
+\end{conjecture}
+
+\begin{remark}\label{rem:star}
+On a star $K_{1,N}$ with $N\ge2$ leaves and equal conductances, $\gap_k=\gap_1$ for every $k$ and all site weights, so Conjecture~\ref{conj} holds there and so does $\gap_{\mathrm{SIP}}=\gap_{\RW}$. Take unit conductances (a common conductance only rescales time) and label the centre $0$. The chain of \cite[Section~5]{FMW15} with $M$ particles moves a particle from leaf $i$ to the centre at rate $\eta_i(\alpha_0+\eta_0)$ and from the centre to leaf $i$ at rate $\eta_0(\alpha_i+\eta_i)$, so it is $\mathrm{SIP}_M$ on the star, and Feng, Miclo and Wang show that its spectral gap is $\alpha_0$ for $M\ge N+1$. The walk $\RW$ on the star has $\gap_1=\alpha_0$: the functions that vanish at the centre and satisfy $\sum_i\alpha_if(i)=0$ form an eigenspace for $\alpha_0$, and the other nonzero eigenvalue is $\alpha_0+\sum_i\alpha_i$. Finally, the spectrum of $L_{k-1}$ is contained in that of $L_k$, so $\gap_k$ is nonincreasing in $k$ \cite[Section~3.1]{KS25}, a consequence of the injectivity of the annihilation operator proved in \cite[Appendix~A]{KS24}. Hence $\alpha_0=\gap_{N+1}\le\gap_k\le\gap_1=\alpha_0$ for $2\le k\le N$. For stars with unequal conductances the conjecture is open.
+\end{remark}
+
+The answer differs from that for a closely related model. For the Kipnis--Marchioro--Presutti exchange model~\cite{KMP82}, whose particle counterpart is the beta-binomial splitting process, Caputo, Quattropani and Sau proved that the spectral gap is always attained by a one- or two-particle mode, and that on a fixed weighted graph the one-particle mode dominates for every choice of site weights if and only if the graph is a path \cite[Theorem~1.6 and Remark~1.7]{CQS26}. They note that for the Brownian energy process, whose particle counterpart is the inclusion process, it is open whether the spectral gap is always attained by polynomials of degree at most two, that is, by a one- or two-particle mode of the inclusion process, and that their method does not seem to extend directly to it \cite[Section~1.4.6]{CQS26}. For the inclusion process at small weights the corresponding class is the caterpillars (Corollary~\ref{cor:C} and Proposition~\ref{prop:small}), which include the stars as well as the paths.
+
+By \cite{KS24} only weights with $\alpha_{\min}<1$ are in question, and by Corollary~\ref{cor:C} the conjecture holds for all sufficiently small weights along every direction. Proposition~\ref{prop:comb} reduces it to combs, the caterpillars with exactly one leaf at each spine vertex.
+
+\section{Caterpillars}\label{sec:cat}
+
+\begin{lemma}[\cite{HS71}]\label{lem:cat}
+A tree is a caterpillar if and only if it contains no subtree isomorphic to $S(2,2,2)$.
+\end{lemma}
+
+\begin{lemma}\label{lem:spine}
+If $P=v_1\cdots v_m$ is a spine of a caterpillar, every vertex not on $P$ is a leaf adjacent to exactly one vertex of $P$.
+\end{lemma}
+
+\begin{proof}
+Let $x\notin P$. Then $x$ is adjacent to some $v_i$, and to only one, since two would close a cycle with $P$. If $x$ had a second neighbour $y$, then $y\notin P$, and $y$ would be adjacent to some $v_j$; the walk $v_i\,x\,y\,v_j$ followed by $P$ back to $v_i$ would contain a cycle. So $x$ is a leaf.
+\end{proof}
+
+\section{Non-caterpillars separate}\label{sec:A}
+
+\begin{lemma}[contraction]\label{lem:contract}
+Let $T'$ be obtained from a tree $T$ by contracting a set of edges, and suppose that $T'$ with some data $(c',\alpha')$ satisfies $\gap_2<\gap_1$. Then there are data $(c,\alpha)$ on $T$ with $\gap_2<\gap_1$.
+\end{lemma}
+
+\begin{proof}
+The vertices of $T$ fall into blocks, one for each vertex of $T'$; each block spans a subtree of $T$, and each edge $XY$ of $T'$ comes from exactly one edge $xy$ of $T$ with $x\in X$, $y\in Y$. Fix site weights $\alpha$ on $T$ with $\alpha_X:=\sum_{x\in X}\alpha_x=\alpha'_X$ for every block, give the edge $xy$ between blocks $X$ and $Y$ the conductance
+\[
+c_{xy}:=c'_{XY}\,\frac{\alpha_X\alpha_Y}{\alpha_x\alpha_y},
+\]
+and give every edge inside a block the conductance $M$. Fix $k\in\{1,2\}$ and work in $L^2(\pi_k)$, which does not depend on the conductances. The Dirichlet form of $\mathrm{SIP}_k$ is linear in the conductances, so $-L_k=A+MB$ with $A,B\ge0$ self-adjoint: $B$ comes from the edges inside blocks and $A$ from the others. Let $K=\ker B$, let $Q$ be the orthogonal projection onto $K$, let $b>0$ be the smallest nonzero eigenvalue of $B$, and let $\mu_1\le\dots\le\mu_d$ be the eigenvalues of $QAQ$ on $K$.
+
+\emph{Upper bound.} Taking trial subspaces inside $K$ in the min-max principle gives $\lambda_j(A+MB)\le\mu_j$ for $j\le d$ and every $M$.
+
+\emph{Lower bound.} Let $M>\|A\|/b$. For $v=p+q$ with $p\in K$, $q\perp K$,
+\[
+\langle v,(A+MB)v\rangle\ \ge\ \langle p,Ap\rangle-2\|A\|\,|p|\,|q|+(Mb-\|A\|)\,|q|^2 .
+\]
+With $\delta=2\|A\|^2/(Mb-\|A\|)$ and $2\|A\||p||q|\le\delta|p|^2+\delta^{-1}\|A\|^2|q|^2$, the right side is at least $\langle p,(A-\delta)p\rangle+\kappa|q|^2$ with $\kappa=(Mb-\|A\|)/2$. Hence $\lambda_j(A+MB)\ge\min(\mu_j-\delta,\kappa)$, and $\lambda_j(A+MB)\to\mu_j$ for $j\le d$ as $M\to\infty$, while all other eigenvalues tend to infinity.
+
+\emph{The limit operator.} Since each block is connected and all rates inside it are positive, $K$ consists of the functions of the block occupations $m_X=\sum_{x\in X}\eta_x$. Under $\pi_k$, conditionally on $(m_X)_X$, the occupations inside the blocks are independent across blocks and Dirichlet-multinomial with parameters $(\alpha_x)_{x\in X}$; the law of $(m_X)$ is $\pi_k$ on $T'$ with weights $\alpha_X$, by the convolution identity for the factors $\Gamma(\alpha+n)/(\Gamma(\alpha)n!)$. For a function $f$ of $m$ the edge $xy$ between $X$ and $Y$ contributes to the Dirichlet form of $A$
+\[
+\tfrac12\,\mathbb{E}_{\pi_k}\bigl[c_{xy}\eta_x(\alpha_y+\eta_y)\bigl(f(m^{X\to Y})-f(m)\bigr)^2+(x\leftrightarrow y)\bigr],
+\]
+and $\mathbb{E}[\eta_x(\alpha_y+\eta_y)\mid m]=\frac{\alpha_x}{\alpha_X}m_X\cdot\frac{\alpha_y}{\alpha_Y}(\alpha_Y+m_Y)$. So on $K\cong L^2$ of the image measure the form of $A$ is that of $\mathrm{SIP}_k$ on $T'$ with conductances $c_{xy}\alpha_x\alpha_y/(\alpha_X\alpha_Y)=c'_{XY}$ and weights $\alpha'$, and $QAQ|_K$ is $-L_k$ for $(T',c',\alpha')$.
+
+Thus, for $k=1$ and $k=2$, the low eigenvalues of $-L_k$ on $T$ converge to those on $(T',c',\alpha')$ as $M\to\infty$, and $\gap_2<\gap_1$ on $T$ for $M$ large.
+\end{proof}
+
+The base case is a seven-vertex spider. Label the centre $0$ and the legs $0\,1\,2$, $0\,3\,4$, $0\,5\,6$.
+
+\begin{lemma}\label{lem:spider}
+On $S(2,2,2)$ take $\alpha_0=\alpha_1=\alpha_3=\alpha_5=10^{-4}$, $\alpha_2=\alpha_4=\alpha_6=1/40$, conductance $16$ on the edges at the centre and $1$ on the outer edges. Then $\gap_2<1/200000<\gap_1$. Numerically $\gap_1=5.99385\dots\times10^{-6}$ and $\gap_2/\gap_1=0.760477\dots$.
+\end{lemma}
+
+\begin{proof}
+The matrices $\pi_k(-L_k)$, $k=1,2$, are symmetric with rational entries, of sizes $7$ and $28$. For $t=1/200000$ the number of negative eigenvalues of $\pi_k(-L_k)-t\,\pi_k$, which by Sylvester's law of inertia is the number of eigenvalues of $-L_k$ below $t$, is computed in exact rational arithmetic by symmetric Gaussian elimination without pivoting (no zero pivot occurs, so $t$ is not an eigenvalue). The counts are $1$ for $k=1$ and $2$ for $k=2$. Since $0$ is a simple eigenvalue in both cases, $\gap_1>t$ and $\gap_2<t$. The numerical values come from the eigenvalues of the symmetrised generators computed at fifty digits; the script \texttt{check\_spider.py} (see Code and data availability) carries out both computations.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:A}]
+By Lemma~\ref{lem:cat}, $T$ contains a subtree $S\cong S(2,2,2)$. The edges of $T$ not in $S$ form a forest each of whose components contains exactly one vertex of $S$, since two vertices of $S$ joined outside $S$ would close a cycle. Contracting these edges turns $T$ into $S$. Lemmas~\ref{lem:spider} and~\ref{lem:contract} finish the proof.
+\end{proof}
+
+\begin{proposition}\label{prop:small}
+Let $T$ be a finite tree that is not a caterpillar. There are conductances $c$ and $\hat\alpha>0$ on $T$ with $\lambda_{2,2}(\hat\alpha)<\gap_{\RW}(\hat\alpha)$. Consequently, for each $k\ge2$ there is $\eps_0>0$, depending on $T,c,\hat\alpha,k$, such that $\gap_k(T,\eps\hat\alpha)<\gap_1(T,\eps\hat\alpha)$ for all $0<\eps<\eps_0$.
+\end{proposition}
+
+\begin{proof}
+Start with the spider of Lemma~\ref{lem:spider} and $\hat\alpha=10^4\alpha$, so that $\hat\alpha=1$ at $0,1,3,5$ and $\hat\alpha=250$ at $2,4,6$, with the same conductances. The rates of $\RW$ are linear in the weights, so Lemma~\ref{lem:spider} gives $\gap_{\RW}(\hat\alpha)=10^4\gap_1>1/20$. The unordered pairs at distance at least two are of four types: two tips, an inner vertex and the tip of another leg, the centre and a tip, and two inner vertices ($3$, $6$, $3$ and $3$ pairs). Let $f$ take the values $100$, $98$, $64$ and $92$ on these types, and let $H$ be minus the killed generator on $\Omega_{2,2}$, which is self-adjoint in $L^2$ with weights $\hat\alpha_x\hat\alpha_y$. The out-rates of the four types are $2$, $267$, $49$ and $532$, and on the four types
+\begin{align*}
+Hf&=2\cdot100-2\cdot98=4, & Hf&=267\cdot98-250\cdot100-16\cdot64-92=50,\\
+Hf&=49\cdot64-2\cdot16\cdot98=0, & Hf&=532\cdot92-2\cdot250\cdot98=-56,
+\end{align*}
+so that $\langle f,Hf\rangle=82{,}334{,}544$ and $\|f\|^2=1{,}892{,}503{,}392$, and
+\[
+\lambda_{2,2}(\hat\alpha)\le\frac{1{,}715{,}303}{39{,}427{,}154}<\frac1{20}<\gap_{\RW}(\hat\alpha).
+\]
+
+Next suppose a tree $T$ with conductances $c$ and weights $\hat\alpha$ has $\lambda:=\lambda_{2,2}<g:=\gap_{\RW}$, and attach a new leaf $z$ to a vertex $v$ of $T$. Fix $R>g$ and $\theta>0$, put $\hat\alpha_z=\theta\hat\alpha_v$ and $c_{vz}=R/\hat\alpha_v$, and keep all other data. The walk jumps from $v$ to $z$ at rate $R\theta$ and back at rate $R$. As $\theta\to0$ the matrix of minus its generator, with $z$ listed last, converges to a block lower triangular matrix whose eigenvalues are those of the walk on $T$ together with $R$. The eigenvalues are real for $\theta>0$ by reversibility, $0$ is simple, and eigenvalues depend continuously on the matrix entries, so $\gap_{\RW}$ of the enlarged tree tends to $g$. For the killed pair, extend a minimiser $f$ on $\Omega_{2,2}(T)$ by zero to the pairs containing $z$. Distances between old vertices, old rates and old pair weights do not change. The only new transitions out of an old pair are jumps from $v$ to $z$, and from a pair $\{v,y\}$ at distance at least two such a jump lands on $\{z,y\}$, which is at distance at least three and where the extension vanishes. Each of them adds $R\theta\,\hat\alpha_v\hat\alpha_y f(\{v,y\})^2$ to the Dirichlet form, while the norm is unchanged. Hence $\lambda_{2,2}$ of the enlarged tree is at most $\lambda+R\theta$, which is below its $\gap_{\RW}$ once $\theta$ is small.
+
+By Lemma~\ref{lem:cat}, $T$ contains a copy $S$ of $S(2,2,2)$. Listing the vertices of $T$ outside $S$ in order of distance from $S$, each has exactly one neighbour among those listed before it or in $S$, since a second one would close a cycle; so $T$ is obtained from $S$ by attaching leaves one at a time, and the two steps above give the first claim. The second follows from \eqref{eq:KSlimit}: $\gap_k(\eps\hat\alpha)/\eps\to\lambda_{2,2}(\hat\alpha)<\gap_{\RW}(\hat\alpha)=\gap_1(\eps\hat\alpha)/\eps$.
+\end{proof}
+
+Numerically, for the spider with $\hat\alpha=10^4\alpha$ one finds $\lambda_{2,2}(\hat\alpha)=0.0434993511\dots$ and $\gap_{\RW}(\hat\alpha)=0.0599385\dots$, so the limit in \eqref{eq:KSlimit} is $0.7257\dots$ times $\gap_{\RW}(\hat\alpha)$.
+
+\section{The small-weight limit}\label{sec:limit}
+
+We recall what we use from \cite[Section~5]{KS25}. For $k\ge2$ the generator of $\mathrm{SIP}_k(\eps\hat\alpha)$ sped up by $\eps^{-1}$ splits into a slow part, $k$ independent copies of $\RW(\hat\alpha)$, and a fast part, under which particles on adjacent sites merge. Let $\Omega_k$ be the set of configurations with no two occupied adjacent sites, and $\Omega_{k,m}\subseteq\Omega_k$ those with exactly $m$ occupied sites. All eigenvalues of $e^{t\eps^{-1}L_k}$ converge with multiplicity to those of $e^{tG_k}\Pi_k$, where $G_k$ is the generator of an effective chain on $\Omega_k$ and $\Pi_k$ the projection onto its domain \cite[Proposition~5.1 and the paragraph after it]{KS25}; the remaining eigenvalues of $-\eps^{-1}L_k$ tend to infinity. The effective chain never increases the number of stacks (occupied sites), so its rate matrix is block lower triangular with diagonal blocks indexed by $m$ \cite[Proposition~5.4]{KS25}. The block $m=1$ has the spectrum of $\RW(\hat\alpha)$ \cite[Proposition~5.4(b)]{KS25}. For $k=2$ the block $m=2$ is the generator of two independent copies of $\RW(\hat\alpha)$ on $\Omega_{2,2}$, the unordered pairs at distance at least two, killed at the first jump to distance at most one. From distance at least two a single jump cannot land on the other particle; a jump next to it creates an adjacent pair, which the fast dynamics merges into one stack. Its bottom eigenvalue is $\lambda_{2,2}(\hat\alpha)$ \cite[Corollary~5.7]{KS25}. For $k\ge3$ the bottom eigenvalues $\lambda_{k,m}$ of the blocks $m\ge2$ satisfy $\lambda_{k,m}=\lambda_{m,m}\ge\lambda_{2,2}$ \cite[Propositions~5.10 and~5.14]{KS25}. Together with \cite[Corollaries~5.2 and~5.7]{KS25} these give \eqref{eq:KSlimit}.
+
+\section{Caterpillars in the small-weight limit}\label{sec:B}
+
+\begin{proof}[Proof of Theorem~\ref{thm:B}]
+Let $v_1,\dots,v_m$ be a spine. For a vertex $x$ let $p(x)=i$ if $x=v_i$ or if $x$ is a leaf attached to $v_i$; this is well defined by Lemma~\ref{lem:spine}. A jump of one walker changes $p$ by at most one, and it changes $p$ only when the walker moves along the spine.
+
+Let $\Omega$ be the set of \emph{ordered} pairs $(x,y)$ at distance at least two. Suppose $(x,y)\in\Omega$ with $p(x)<p(y)$ and a jump of $x$ to $x'$ gives $p(x')=p(y)$. Then $x$ moved along the spine onto $v_{p(y)}$, while $y$ is $v_{p(y)}$ or a leaf at $v_{p(y)}$, so $d(x',y)\le1$ and the pair is killed. The same holds with the roles of $x$ and $y$ exchanged. If $p(x)=p(y)$ and $d(x,y)\ge2$, then $x$ and $y$ are two leaves at the same spine vertex, and every jump from $(x,y)$ is killed. Fix an order on the leaves at each spine vertex and let $\Omega^+$ be the pairs in $\Omega$ with $p(x)<p(y)$, or with $p(x)=p(y)$ and $x$ before $y$; let $\Omega^-$ be its image under $(x,y)\mapsto(y,x)$. Then $\Omega=\Omega^+\sqcup\Omega^-$, and every jump from a pair in $\Omega^+$ either is killed or lands in $\Omega^+$. (If $\Omega$ is empty, $\lambda_{2,2}=+\infty$ by the convention of \cite[Corollary~5.7]{KS25} and there is nothing to prove.) In particular $(x,y)\mapsto\{x,y\}$ identifies the killed pair on $\Omega^+$ with the killed pair on $\Omega_{2,2}$, reversibility measures included, so $\lambda_{2,2}$ is the bottom of the killed generator on $\Omega^+$.
+
+Let $\mathcal{D}$ denote the Dirichlet form of two free independent walkers on $V\times V$ in $L^2(\hat\alpha\otimes\hat\alpha)$. The killed generator on $\Omega^+$ has the form $f\mapsto\mathcal{D}(f)$ on functions vanishing off $\Omega^+$. For such $f$ put $g(x,y)=f(x,y)-f(y,x)$. Then $g$ vanishes off $\Omega$ and is antisymmetric. Since $f$ and $f\circ\mathrm{swap}$ have disjoint supports and no transition joins $\Omega^+$ to $\Omega^-$, the cross term of $\mathcal{D}$ vanishes and $\mathcal{D}(g)=2\mathcal{D}(f)$, while $\|g\|^2=2\|f\|^2$. The free generator on $V\times V$ has eigenvalues $\lambda_i+\lambda_j$, where $0=\lambda_0<\lambda_1\le\dots$ are the eigenvalues of $-$(the generator of $\RW(\hat\alpha)$), and on antisymmetric functions its spectrum is $\{\lambda_i+\lambda_j:i<j\}$, with minimum $\lambda_0+\lambda_1=\gap_{\RW}(\hat\alpha)$. Hence $\mathcal{D}(f)/\|f\|^2=\mathcal{D}(g)/\|g\|^2\ge\gap_{\RW}$, and $\lambda_{2,2}\ge\gap_{\RW}$.
+
+Suppose equality holds and $f$ is a minimiser. Then $g$ attains the bottom of the antisymmetric spectrum, so it lies in the corresponding eigenspace; since $\lambda_i+\lambda_j>\lambda_1$ whenever $i,j\ge1$, $g(x,y)=\psi(y)-\psi(x)$ for an eigenfunction $\psi$ of $\RW(\hat\alpha)$ with eigenvalue $\lambda_1$. But $g$ vanishes on adjacent pairs, so $\psi$ is constant along every edge, hence constant, and then $\psi=0$ because it is orthogonal to constants. So $g=0$ and $f=0$, a contradiction.
+\end{proof}
+
+\begin{proof}[Proof of Corollary~\ref{cor:C}]
+Fix $k\ge2$ and choose $s$ with $\gap_{\RW}(\hat\alpha)<s<\lambda_{2,2}(\hat\alpha)$, which is possible by Theorem~\ref{thm:B}, and with $s$ not an eigenvalue of $\RW(\hat\alpha)$. By Section~\ref{sec:limit}, and since each diagonal block of the effective chain is self-adjoint in a weighted $L^2$ space \cite[Lemma~5.9]{KS25}, the limit spectrum is the spectrum of $\RW(\hat\alpha)$ together with eigenvalues $\ge\lambda_{k,2}\wedge\dots\wedge\lambda_{k,k}=\lambda_{2,2}>s$, the equality by \cite[Propositions~5.10 and~5.14]{KS25}. So for small $\eps$ the number of eigenvalues of $-\eps^{-1}L_k$ below $s$, with multiplicity, equals the number $N_s$ of eigenvalues of $\RW(\hat\alpha)$ below $s$. On the other hand, for every $\eps$ the span of the $\eta_x$ is invariant and carries the eigenvalues of $\eps\,\RW(\hat\alpha)$ exactly, so $-\eps^{-1}L_k$ already has $N_s$ eigenvalues below $s$ there: $0$ and $\gap_{\RW}(\hat\alpha)$ among them. Hence there are no others below $s$, and the smallest nonzero eigenvalue of $-L_k$ is $\eps\gap_{\RW}(\hat\alpha)=\gap_1(\eps\hat\alpha)$.
+\end{proof}
+
+\section{Reduction to combs}\label{sec:comb}
+
+A \emph{comb} is a path $v_1\cdots v_m$ with exactly one leaf attached to each $v_i$.
+
+\begin{proposition}\label{prop:comb}
+Every caterpillar is obtained from a comb by contracting edges. Consequently, Conjecture~\ref{conj} holds for all caterpillars if it holds for all combs.
+\end{proposition}
+
+\begin{proof}
+Let the caterpillar have spine $u_1,\dots,u_m$ with $c_i$ leaves at $u_i$. Replace $u_i$ by a path of $\max(c_i,1)$ spine vertices, each carrying one leaf, and join these paths in order; this is a comb. Contracting the spine edges inside the $i$-th path merges it into one vertex with $\max(c_i,1)$ leaves; where $c_i=0$, contract also the one pendant edge. The result is the caterpillar. If a weighted caterpillar separated, Lemma~\ref{lem:contract} would give a separating weighted comb.
+\end{proof}
+
+\section*{Acknowledgments and funding}
+The research presented in this paper was supported by the European Research Council (ERC) under the European Union's Horizon Europe research and innovation programme (grant agreement No.~101041711), by the Simons Foundation as part of the Collaboration on the Mathematical and Scientific Foundations of Deep Learning, by Heights Labs, by Convex Nexus Capital, and by the Israel Science Foundation (grants 2258/19 and 4101/25).
+
+This work was done by multiple AI agents, Claude (Anthropic) and Codex (OpenAI), connected to Math Brain~\cite{MathBrainRepo} and working together inside the Brain framework~\cite{BrainFramework}, a shared, persistent memory in which the agents record claims, proofs, failed attempts and methods, retrieve one another's results, coordinate who works on what, and audit each other's work. The method is described in~\cite{MathBrainPaper}.
+
+\section*{Declaration of competing interest}
+The author holds equity in Heights Labs and in Convex Nexus Capital and has a management role at Convex Nexus Capital. These entities are included in the funding declaration above.
+
+\section*{Code and data availability}
+The \LaTeX\ source and the program \texttt{check\_spider.py} with its output, which verify Lemma~\ref{lem:spider} in exact rational arithmetic and compute the numerical values in Section~\ref{sec:A}, are available at \url{https://github.com/yspennstate/inclusion-process-trees-spectral-gap}.
+
+\section*{Declaration of generative AI and AI-assisted technologies}
+Codex (OpenAI) found the separating spider by a numerical search, gave its first exact certificate and found the argument of Proposition~\ref{prop:small}. Claude (Anthropic) re-certified the spider with an independent implementation, found the proof of Theorem~\ref{thm:B} and the reduction to combs, checked the proofs and the citations, and wrote the text. The work uses the small-weight analysis of Kim and Sau~\cite{KS24,KS25}, the argument of Karlin and McGregor~\cite{KM59}, the theorem of Feng, Miclo and Wang on stars~\cite{FMW15} and the characterisation of caterpillars~\cite{HS71}; these results, and those of \cite{CLR10,CQS26} recalled in the introduction, are due to their authors. Theorems~\ref{thm:A} and~\ref{thm:B}, Corollary~\ref{cor:C}, Proposition~\ref{prop:small} and the reduction to combs are new. The author selected the problem. The author directed the work and is responsible for the content of the paper and for decisions concerning its dissemination.
+
+\begin{thebibliography}{99}
+
+\bibitem{CLR10}
+P.~Caputo, T.~M. Liggett, and T.~Richthammer.
+\newblock Proof of Aldous' spectral gap conjecture.
+\newblock \emph{J. Amer. Math. Soc.}, 23(3):831--851, 2010.
+
+\bibitem{CQS26}
+P.~Caputo, M.~Quattropani, and F.~Sau.
+\newblock Aldous' spectral gap phenomena in stochastic exchange models.
+\newblock arXiv:2609.10450, 2026.
+
+\bibitem{FMW15}
+S.~Feng, L.~Miclo, and F.-Y. Wang.
+\newblock Poincar\'e inequality for Dirichlet distributions and infinite-dimensional generalizations.
+\newblock \emph{ALEA Lat. Am. J. Probab. Math. Stat.}, 14(1):361--380, 2017. doi:10.30757/alea.v14-20. arXiv:1504.02829.
+
+\bibitem{HJ96}
+S.~Handjani and D.~Jungreis.
+\newblock Rate of convergence for shuffling cards by transpositions.
+\newblock \emph{J. Theoret. Probab.}, 9(4):983--993, 1996. doi:10.1007/BF02214260.
+
+\bibitem{HS71}
+F.~Harary and A.~J. Schwenk.
+\newblock Trees with {H}amiltonian square.
+\newblock \emph{Mathematika}, 18(1):138--140, 1971. doi:10.1112/S0025579300008494.
+
+\bibitem{KM59}
+S.~Karlin and J.~McGregor.
+\newblock Coincidence probabilities.
+\newblock \emph{Pacific J. Math.}, 9(4):1141--1164, 1959.
+
+\bibitem{KS24}
+S.~Kim and F.~Sau.
+\newblock Spectral gap of the symmetric inclusion process.
+\newblock \emph{Ann. Appl. Probab.}, 34(5):4899--4920, 2024.
+\newblock arXiv:2303.16607.
+
+\bibitem{KS25}
+S.~Kim and F.~Sau.
+\newblock One- and two-particle spectral gap identities for the symmetric inclusion process and related models.
+\newblock \emph{Comm. Math. Phys.}, 407(11):225, 2026. doi:10.1007/s00220-026-05728-9. arXiv:2412.01489v2.
+
+\bibitem{GKR07}
+C.~Giardin\`a, J.~Kurchan, and F.~Redig.
+\newblock Duality and exact correlations for a model of heat conduction.
+\newblock \emph{J. Math. Phys.}, 48(3):033301, 2007. doi:10.1063/1.2711373.
+
+\bibitem{KMP82}
+C.~Kipnis, C.~Marchioro, and E.~Presutti.
+\newblock Heat flow in an exactly solvable model.
+\newblock \emph{J. Stat. Phys.}, 27(1):65--74, 1982. doi:10.1007/BF01011740.
+
+\bibitem{MathBrainRepo}
+Y.~Shmalo.
+\newblock \emph{Math Brain: public snapshot, code and tests}, 2026.
+\newblock \url{https://github.com/yspennstate/math-brain-public}.
+
+\bibitem{MathBrainPaper}
+Y.~Shmalo.
+\newblock \emph{Math Brain: shared, auditable memory for multi-agent mathematical research}, October 2026.
+\newblock \url{https://github.com/yspennstate/math-brain-public/tree/main/papers/math-brain-2026-10-24}.
+
+\bibitem{BrainFramework}
+Y.~Shmalo.
+\newblock \emph{Brain Framework}, public software repository, 2026.
+\newblock \url{https://github.com/yspennstate/brain-framework-public}.
+
+\end{thebibliography}
+
+\end{document}
