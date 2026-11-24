@@ -11,7 +11,7 @@ of Kim and Sau, this shows that a tree is a caterpillar if and only if, for all 
 every number of particles, the gap equals that of one particle once the weights are small enough. We conjecture that on a caterpillar two particles never relax more slowly than one, at any weights; on stars
 with equal conductances this follows from work of Feng, Miclo and Wang and of Kim and Sau.
 
-`main.tex` and `main.pdf` are the paper.
+`main.tex` and `main.pdf` are the paper; archived at Zenodo, doi:10.5281/zenodo.24510421.
 
 ## The spider check
 
